@@ -1,0 +1,53 @@
+{
+    "appKeys": {
+        "FETCH_LOCKS": 15,
+        "FETCH_MODES": 0,
+        "FETCH_MSWITCHES": 22,
+        "FETCH_SWITCHES": 5,
+        "LOCK_FINAL": 20,
+        "LOCK_ID": 17,
+        "LOCK_INDEX": 19,
+        "LOCK_NAME": 16,
+        "LOCK_UPDATE": 21,
+        "LOCK_VALUE": 18,
+        "MODE_FINAL": 3,
+        "MODE_INDEX": 2,
+        "MODE_NAME": 1,
+        "MODE_SET": 4,
+        "MSWITCH_FINAL": 27,
+        "MSWITCH_ID": 24,
+        "MSWITCH_INDEX": 26,
+        "MSWITCH_NAME": 23,
+        "MSWITCH_UPDATE": 28,
+        "MSWITCH_VALUE": 25,
+        "SWITCH_FINAL": 10,
+        "SWITCH_ID": 7,
+        "SWITCH_INDEX": 9,
+        "SWITCH_NAME": 6,
+        "SWITCH_UPDATE": 11,
+        "SWITCH_VALUE": 8,
+        "UPDATE_ID": 12,
+        "UPDATE_NAME": 13,
+        "UPDATE_VALUE": 14
+    },
+    "capabilities": [
+        "configurable"
+    ],
+    "companyName": "mongo527",
+    "longName": "SmartThings PT",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "sdkVersion": "3",
+    "shortName": "SmartThings PT",
+    "targetPlatforms": [
+        "aplite",
+        "basalt"
+    ],
+    "uuid": "5d9ca493-dc16-48e7-ad95-0ad231a0fd1c",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
