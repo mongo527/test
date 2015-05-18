@@ -1,0 +1,35 @@
+/**********************************
+    *** Created by: Mongo527 ***
+**********************************/
+
+enum {
+    AKEY_FETCH_MODES = 0,
+    AKEY_MODE_NAME = 1,
+    AKEY_MODE_INDEX = 2,
+    AKEY_MODE_FINAL = 3,
+    AKEY_MODE_SET = 4,
+    AKEY_FETCH_SWITCHES = 5,
+    AKEY_SWITCH_NAME = 6,
+    AKEY_SWITCH_ID = 7, 
+    AKEY_SWITCH_VALUE = 8,
+    AKEY_SWITCH_INDEX = 9,
+    AKEY_SWITCH_FINAL = 10,
+    AKEY_SWITCH_UPDATE = 11,
+    AKEY_UPDATE_ID = 12,
+    AKEY_UPDATE_NAME = 13,
+    AKEY_UPDATE_VALUE = 14,
+    AKEY_FETCH_LOCKS = 15,
+    AKEY_LOCK_NAME = 16,
+    AKEY_LOCK_ID = 17,
+    AKEY_LOCK_VALUE = 18,
+    AKEY_LOCK_INDEX = 19,
+    AKEY_LOCK_FINAL = 20,
+    AKEY_LOCK_UPDATE = 21,
+    AKEY_FETCH_MSWITCHES = 22,
+    AKEY_MSWITCH_NAME = 23,
+    AKEY_MSWITCH_ID = 24,
+    AKEY_MSWITCH_VALUE = 25,
+    AKEY_MSWITCH_INDEX = 26,
+    AKEY_MSWITCH_FINAL = 27,
+    AKEY_MSWITCH_UPDATE = 28,
+};
