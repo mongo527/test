@@ -3,6 +3,7 @@
         "FETCH_LOCKS": 15,
         "FETCH_MODES": 0,
         "FETCH_MSWITCHES": 22,
+        "FETCH_SENSORS": 29,
         "FETCH_SWITCHES": 5,
         "LOCK_FINAL": 20,
         "LOCK_ID": 17,
@@ -20,6 +21,12 @@
         "MSWITCH_NAME": 23,
         "MSWITCH_UPDATE": 28,
         "MSWITCH_VALUE": 25,
+        "SENSOR_FINAL": 35,
+        "SENSOR_ID": 31,
+        "SENSOR_INDEX": 34,
+        "SENSOR_NAME": 30,
+        "SENSOR_TYPE": 33,
+        "SENSOR_VALUE": 32,
         "SWITCH_FINAL": 10,
         "SWITCH_ID": 7,
         "SWITCH_INDEX": 9,
@@ -37,7 +44,18 @@
     "longName": "SmartThings PT",
     "projectType": "native",
     "resources": {
-        "media": []
+        "media": [
+            {
+                "file": "images/red-gray.png",
+                "name": "IMAGE_RED",
+                "type": "png"
+            },
+            {
+                "file": "images/green-gray.png",
+                "name": "IMAGE_GREEN",
+                "type": "png"
+            }
+        ]
     },
     "sdkVersion": "3",
     "shortName": "SmartThings PT",

@@ -76,15 +76,12 @@ uint16_t switches_num_rows_callback(MenuLayer *menu_layer, uint16_t section_inde
 }
 
 void switches_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, void *callback_context) {
-    graphics_context_set_text_color(ctx, GColorBlack);
-    /*if(strcmp(switchesValue[cell_index->row], "on")) {
-        menu_layer_set_highlight_colors(switches_layer, GColorGreen, GColorBlack);
+    if(strcmp(switchesValue[cell_index->row], "on") == 0) {
+        menu_cell_basic_draw(ctx, cell_layer, switches[cell_index->row], switchesValue[cell_index->row], gbitmap_create_with_resource(RESOURCE_ID_IMAGE_GREEN));
     }
     else {
-        menu_layer_set_highlight_colors(switches_layer, GColorRed, GColorBlack);
-    }*/
-    menu_cell_basic_draw(ctx, cell_layer, switches[cell_index->row], switchesValue[cell_index->row], NULL);
-    //graphics_draw_text(ctx, shows[cell_index->row], fonts_get_system_font(FONT_KEY_GOTHIC_24), (GRect) { .origin = { 8, 0 }, .size = { 144 - 8, 28 } }, GTextOverflowModeTrailingEllipsis, GTextAlignmentLeft, NULL);
+        menu_cell_basic_draw(ctx, cell_layer, switches[cell_index->row], switchesValue[cell_index->row], gbitmap_create_with_resource(RESOURCE_ID_IMAGE_RED));
+    }
 }
 
 void switches_in_received_handler(DictionaryIterator *iter) {
@@ -94,8 +91,6 @@ void switches_in_received_handler(DictionaryIterator *iter) {
     Tuple *switch_index_tuple = dict_find(iter, AKEY_SWITCH_INDEX);
     Tuple *switch_final_tuple = dict_find(iter, AKEY_SWITCH_FINAL);
     
-    //APP_LOG(APP_LOG_LEVEL_DEBUG, "Index: %d --- Final %d", mode_index_tuple->value->int16, mode_final_tuple->value->int16);
-    //APP_LOG(APP_LOG_LEVEL_DEBUG, "Name: %s --- Value: %s", switch_name_tuple->value->cstring, switch_value_tuple->value->cstring);
     NUMBER_SWITCHES = switch_final_tuple->value->int16;
     
     if(switch_name_tuple) {

@@ -40,6 +40,8 @@ void modes_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *c
     dict_write_end(iter);
     
     app_message_outbox_send();
+    
+    window_stack_pop(true);
 }
 
 void modes_init() {
@@ -74,7 +76,7 @@ uint16_t modes_num_rows_callback(MenuLayer *menu_layer, uint16_t section_index, 
 }
 
 void modes_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, void *callback_context) {
-    graphics_context_set_text_color(ctx, GColorBlack);
+    //graphics_context_set_text_color(ctx, GColorBlack);
     menu_cell_basic_draw(ctx, cell_layer, modes[cell_index->row], NULL, NULL);
     //graphics_draw_text(ctx, shows[cell_index->row], fonts_get_system_font(FONT_KEY_GOTHIC_24), (GRect) { .origin = { 8, 0 }, .size = { 144 - 8, 28 } }, GTextOverflowModeTrailingEllipsis, GTextAlignmentLeft, NULL);
 }

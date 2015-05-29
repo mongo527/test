@@ -8,11 +8,12 @@
 #include "switches.h"
 #include "locks.h"
 #include "momentary.h"
+#include "sensors.h"
     
 static Window *window;
 static SimpleMenuLayer *main_layer;
 static SimpleMenuSection main_sections[1];
-static SimpleMenuItem main_items[4];
+static SimpleMenuItem main_items[5];
 
 //static void things_callback (int index, void *ctx) {}
 static void modes_callback (int index, void *ctx) {
@@ -87,6 +88,62 @@ static void mSwitches_callback (int index, void *ctx) {
     mSwitches_init();
 }
 
+static void sensors_callback(int index, void *ctx) {
+    Tuplet fetch_sensors_tuple = TupletCString(AKEY_FETCH_SENSORS, "sensors");
+    
+    DictionaryIterator *iter;
+    app_message_outbox_begin(&iter);
+    
+    if(iter == NULL) {
+        return;
+    }
+    
+    dict_write_tuplet(iter, &fetch_sensors_tuple);
+    dict_write_end(iter);
+    
+    app_message_outbox_send();
+    
+    sensors_init();
+}
+
+/*
+static void contacts_callback (int index, void *ctx) {
+    Tuplet fetch_contacts_tuple = TupletCString(AKEY_FETCH_CONTACTS, "contactSensors");
+    
+    DictionaryIterator *iter;
+    app_message_outbox_begin(&iter);
+    
+    if(iter == NULL) {
+        return;
+    }
+    
+    dict_write_tuplet(iter, &fetch_contacts_tuple);
+    dict_write_end(iter);
+    
+    app_message_outbox_send();
+    
+    contacts_init();
+}
+
+static void motions_callback (int index, void *ctx) {
+    Tuplet fetch_motions_tuple = TupletCString(AKEY_FETCH_MOTIONS, "motionSensors");
+    
+    DictionaryIterator *iter;
+    app_message_outbox_begin(&iter);
+    
+    if(iter == NULL) {
+        return;
+    }
+    
+    dict_write_tuplet(iter, &fetch_motions_tuple);
+    dict_write_end(iter);
+    
+    app_message_outbox_send();
+    
+    motions_init();
+}
+*/
+
 static void window_load(Window *window) {	
 	main_items[0] = (SimpleMenuItem) {
         .title = "Modes",
@@ -108,8 +165,23 @@ static void window_load(Window *window) {
         .callback = mSwitches_callback,
     };
     
+    main_items[4] = (SimpleMenuItem) {
+        .title = "Sensors",
+        .callback = sensors_callback,
+    };
+/*    
+    main_items[4] = (SimpleMenuItem) {
+        .title = "Contact Sensors",
+        .callback = contacts_callback,
+    };
+    
+    main_items[5] = (SimpleMenuItem) {
+        .title = "Motion Sensors",
+        .callback = motions_callback,
+    }
+*/    
     main_sections[0] = (SimpleMenuSection) {
-		.num_items = 4,
+		.num_items = 5,
 		.items = main_items,
 	};
     
@@ -136,6 +208,17 @@ static void in_received_handler(DictionaryIterator *iter, void *context) {
     if(dict_find(iter, AKEY_MSWITCH_ID)) {
         mSwitches_in_received_handler(iter);
     }
+    if(dict_find(iter, AKEY_SENSOR_TYPE)) {
+        sensors_in_received_handler(iter);
+    }
+    /*
+    if(dict_find(iter, AKEY_CONTACT_NAME)) {
+        sensors_in_received_handler(iter);
+    }
+    if(dict_find(iter, AKEY_MOTION_NAME)) {
+        sensors_in_received_handler(iter);
+    }
+    */
 }
 
 static void in_dropped_handler(AppMessageResult reason, void *context) {

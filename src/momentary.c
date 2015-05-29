@@ -76,7 +76,7 @@ uint16_t mSwitches_num_rows_callback(MenuLayer *menu_layer, uint16_t section_ind
 }
 
 void mSwitches_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, void *callback_context) {
-    graphics_context_set_text_color(ctx, GColorBlack);
+    //graphics_context_set_text_color(ctx, GColorBlack);
     /*if(strcmp(mSwitchesValue[cell_index->row], "on")) {
         menu_layer_set_highlight_colors(mSwitches_layer, GColorGreen, GColorBlack);
     }
