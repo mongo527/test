@@ -14,7 +14,6 @@ static SimpleMenuLayer *main_layer;
 static SimpleMenuSection main_sections[1];
 static SimpleMenuItem main_items[4];
 
-//static void things_callback (int index, void *ctx) {}
 static void modes_callback (int index, void *ctx) {
     Tuplet modes_tuple = TupletCString(AKEY_FETCH_MODES, "modes");
     

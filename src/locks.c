@@ -7,8 +7,8 @@ static MenuLayer *locks_layer;
 
 int NUMBER_LOCKS;
 char locks[50][50];
-char locksValue[5][5];
-char locksID[25][25];
+char locksValue[50][10];
+char locksID[50][40];
 
 uint16_t locks_num_sections_callback(MenuLayer *menu_layer, void *callback_context);
 uint16_t locks_num_rows_callback(MenuLayer *menu_layer, uint16_t section_index, void *callback_context);
@@ -76,7 +76,7 @@ uint16_t locks_num_rows_callback(MenuLayer *menu_layer, uint16_t section_index, 
 }
 
 void locks_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, void *callback_context) {
-    graphics_context_set_text_color(ctx, GColorBlack);
+    //graphics_context_set_text_color(ctx, GColorBlack);
     /*if(strcmp(locksValue[cell_index->row], "on")) {
         menu_layer_set_highlight_colors(locks_layer, GColorGreen, GColorBlack);
     }

@@ -7,8 +7,8 @@ static MenuLayer *switches_layer;
 
 int NUMBER_SWITCHES;
 char switches[50][50];
-char switchesValue[5][5];
-char switchesID[25][25];
+char switchesValue[50][5];
+char switchesID[50][40];
 
 uint16_t switches_num_sections_callback(MenuLayer *menu_layer, void *callback_context);
 uint16_t switches_num_rows_callback(MenuLayer *menu_layer, uint16_t section_index, void *callback_context);
@@ -76,15 +76,7 @@ uint16_t switches_num_rows_callback(MenuLayer *menu_layer, uint16_t section_inde
 }
 
 void switches_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, void *callback_context) {
-    graphics_context_set_text_color(ctx, GColorBlack);
-    /*if(strcmp(switchesValue[cell_index->row], "on")) {
-        menu_layer_set_highlight_colors(switches_layer, GColorGreen, GColorBlack);
-    }
-    else {
-        menu_layer_set_highlight_colors(switches_layer, GColorRed, GColorBlack);
-    }*/
     menu_cell_basic_draw(ctx, cell_layer, switches[cell_index->row], switchesValue[cell_index->row], NULL);
-    //graphics_draw_text(ctx, shows[cell_index->row], fonts_get_system_font(FONT_KEY_GOTHIC_24), (GRect) { .origin = { 8, 0 }, .size = { 144 - 8, 28 } }, GTextOverflowModeTrailingEllipsis, GTextAlignmentLeft, NULL);
 }
 
 void switches_in_received_handler(DictionaryIterator *iter) {
@@ -94,8 +86,6 @@ void switches_in_received_handler(DictionaryIterator *iter) {
     Tuple *switch_index_tuple = dict_find(iter, AKEY_SWITCH_INDEX);
     Tuple *switch_final_tuple = dict_find(iter, AKEY_SWITCH_FINAL);
     
-    //APP_LOG(APP_LOG_LEVEL_DEBUG, "Index: %d --- Final %d", mode_index_tuple->value->int16, mode_final_tuple->value->int16);
-    //APP_LOG(APP_LOG_LEVEL_DEBUG, "Name: %s --- Value: %s", switch_name_tuple->value->cstring, switch_value_tuple->value->cstring);
     NUMBER_SWITCHES = switch_final_tuple->value->int16;
     
     if(switch_name_tuple) {

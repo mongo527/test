@@ -34,19 +34,26 @@
         "configurable"
     ],
     "companyName": "mongo527",
-    "longName": "SmartThings PT",
+    "longName": "SmartThings",
     "projectType": "native",
     "resources": {
-        "media": []
+        "media": [
+            {
+                "file": "images/ST-Pebble-Logo.png",
+                "menuIcon": true,
+                "name": "ST_LOGO",
+                "type": "png"
+            }
+        ]
     },
     "sdkVersion": "3",
-    "shortName": "SmartThings PT",
+    "shortName": "SmartThings",
     "targetPlatforms": [
         "aplite",
         "basalt"
     ],
-    "uuid": "5d9ca493-dc16-48e7-ad95-0ad231a0fd1c",
-    "versionLabel": "1.0",
+    "uuid": "7d7d5e06-75ea-4703-881b-1c40cb73d771",
+    "versionLabel": "2.0",
     "watchapp": {
         "watchface": false
     }
