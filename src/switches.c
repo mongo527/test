@@ -13,6 +13,9 @@ char switchesID[50][40];
 uint16_t switches_num_sections_callback(MenuLayer *menu_layer, void *callback_context);
 uint16_t switches_num_rows_callback(MenuLayer *menu_layer, uint16_t section_index, void *callback_context);
 void switches_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, void *callback_context);
+void switches_draw_header_callback(GContext *ctx, const Layer *cell_layer, uint16_t section_index, void *callback_context);
+
+//void switches_draw_row (GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, "") {}
 
 void switches_load(Window *window) {
     menu_layer_reload_data(switches_layer);
@@ -44,6 +47,10 @@ void switches_select_long_callback(MenuLayer *menu_layer, MenuIndex *cell_index,
     switches_load(switchesWindow);
 }
 
+static int16_t switches_header_height_callback(MenuLayer *menu_layer, uint16_t section_index, void *data) {
+    return MENU_CELL_BASIC_HEADER_HEIGHT;
+}
+
 void switches_init() {
      switchesWindow = window_create();
     
@@ -57,7 +64,9 @@ void switches_init() {
     menu_layer_set_callbacks(switches_layer, NULL, (MenuLayerCallbacks) {
         .get_num_sections = (MenuLayerGetNumberOfSectionsCallback) switches_num_sections_callback,
         .get_num_rows = (MenuLayerGetNumberOfRowsInSectionsCallback) switches_num_rows_callback,
+        .get_header_height = (MenuLayerGetHeaderHeightCallback) switches_header_height_callback,
         .draw_row = (MenuLayerDrawRowCallback) switches_draw_row_callback,
+        .draw_header = (MenuLayerDrawHeaderCallback) switches_draw_header_callback,
         .select_click = (MenuLayerSelectCallback) switches_select_callback,
         .select_long_click = (MenuLayerSelectCallback) switches_select_long_callback,
     });
@@ -76,7 +85,17 @@ uint16_t switches_num_rows_callback(MenuLayer *menu_layer, uint16_t section_inde
 }
 
 void switches_draw_row_callback(GContext *ctx, Layer *cell_layer, MenuIndex *cell_index, void *callback_context) {
-    menu_cell_basic_draw(ctx, cell_layer, switches[cell_index->row], switchesValue[cell_index->row], NULL);
+    menu_cell_basic_draw(ctx, cell_layer, switches[cell_index->row], switchesValue[cell_index->row], gbitmap_create_with_resource(RESOURCE_ID_IMAGE_GREEN_DOT_BLACK));
+    /*if(strcmp(switchesValue[cell_index->row], "on") == 0) {
+        menu_cell_basic_draw(ctx, cell_layer, switches[cell_index->row], switchesValue[cell_index->row], gbitmap_create_with_resource(RESOURCE_ID_GREEN_DOT));
+    }
+    else {
+        menu_cell_basic_draw(ctx, cell_layer, switches[cell_index->row], switchesValue[cell_index->row], gbitmap_create_with_resource(RESOURCE_ID_RED_DOT));
+    }*/
+}
+
+void switches_draw_header_callback(GContext *ctx, const Layer *cell_layer, uint16_t section_index, void *callback_context) {
+    menu_cell_basic_header_draw(ctx, cell_layer, "Switches");
 }
 
 void switches_in_received_handler(DictionaryIterator *iter) {

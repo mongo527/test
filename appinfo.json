@@ -39,6 +39,11 @@
     "resources": {
         "media": [
             {
+                "file": "images/green-gray.png",
+                "name": "IMAGE_GREEN_DOT",
+                "type": "png-trans"
+            },
+            {
                 "file": "images/ST-Pebble-Logo.png",
                 "menuIcon": true,
                 "name": "ST_LOGO",
@@ -49,11 +54,10 @@
     "sdkVersion": "3",
     "shortName": "SmartThings",
     "targetPlatforms": [
-        "aplite",
-        "basalt"
+        "aplite"
     ],
     "uuid": "7d7d5e06-75ea-4703-881b-1c40cb73d771",
-    "versionLabel": "2.0",
+    "versionLabel": "2.01",
     "watchapp": {
         "watchface": false
     }
